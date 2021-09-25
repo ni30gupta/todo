@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+// import useState from 'react'
+
+
 
 function App() {
+  const [task, setTask] = useState([])
+  const [input, setInput] = useState("")
+
+
+
+  const handleChange = (e) => {
+    setInput(e.target.value)
+
+  }
+  const handleKey = (e) => {
+    if (e.key === 'Enter') {
+      submitTask()
+    }
+  }
+
+  const submitTask = () => {
+    if (input != "") {
+      setTask([...task, input])
+    }
+
+    setInput("")
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <input placeholder="Enter Task" type="text" onKeyPress={handleKey} value={input} onChange={handleChange} />
+      <button onClick={submitTask} >Add to List</button>
+      <br />
+      {
+        task.map(data => {
+          return (<h4>{data} <span><button>Edit</button></span> <span><button>Delete</button></span>  </h4>)
+        })
+      }
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
+
