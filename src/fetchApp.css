@@ -1,0 +1,17 @@
+.main {
+  margin: 20px;
+  padding: 20px;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.page {
+  max-height: 300px;
+}
+.users {
+  max-height: 600px;
+  text-align: center;
+  max-width: 40vw;
+}
