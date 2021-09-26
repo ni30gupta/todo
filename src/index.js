@@ -5,11 +5,14 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import FetchApp from './FetchApp';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Row, Col } from 'react-bootstrap';
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <App /> */}
-    <FetchApp />
+    <Row>
+      <Col > <App /></Col>
+      <Col className="bg-dark text-white"><FetchApp /></Col>
+    </Row>
   </React.StrictMode>,
   document.getElementById('root')
 );

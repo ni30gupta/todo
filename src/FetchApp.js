@@ -44,7 +44,7 @@ function FetchApp() {
      return (
           <div className="main">
                <div className="users">
-
+                    <h2 className="text-decoration-underline">Users list</h2>
 
                     {
                          users.length > 0 ? (users.map(user => {

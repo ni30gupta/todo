@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-
+import { Row, Col, Button } from "react-bootstrap";
+import './App.css'
 let fetchData = () => {
   let task_list = localStorage.getItem('task_list')
   if (task_list) {
@@ -74,33 +75,42 @@ function App() {
   }, [task])
 
   return (
-    <div>
+    <div className='main_app'>
+      <h2 className="text-center mb-4 text-decoration-underline">TO DO APP</h2>
       {/* {console.log(task)} */}
-      <input
-        autoFocus
-        placeholder="Enter Task"
-        type="text"
-        onKeyPress={handleKey}
-        value={input}
-        onChange={handleChange}
-      />
-      <button onClick={submitTask}>Add to List</button>
+      <div className="form-inline ">
+        <input className="form-control mr-4 "
+          autoFocus
+
+          placeholder="Enter Task"
+          type="text"
+          onKeyPress={handleKey}
+          value={input}
+          onChange={handleChange}
+        />
+        <Button onClick={submitTask}>Add to List</Button>
+      </div>
       <br />
-      <ul>
-        {task.map((data) => {
-          return (
-            <li id={`li${data.id}`} key={data.id}>
-              {data.name}{" "}
-              <span>
-                <button onClick={() => editTask(data.id)}>Edit</button>
-              </span>{" "}
-              <span>
-                <button onClick={() => deleteTask(data.id)}>Delete</button>
-              </span>{" "}
-            </li>
-          );
-        })}
-      </ul>
+      {/* <ul className='list'> */}
+      {task.map((data) => {
+        return (
+
+          <Row className="mt-2 ">
+            <Col className='bg-light align-self-center' sm={4}>
+              <h6 id={`li${data.id}`} key={data.id}>
+                {data.name}
+              </h6>
+            </Col>
+            <Col sm={1}> <Button onClick={() => editTask(data.id)}>Edit</Button></Col>
+            <Col sm={1}> <Button variant='danger' onClick={() => deleteTask(data.id)}>Delete</Button></Col>
+          </Row>
+
+
+
+
+        );
+      })}
+      {/* </ul> */}
     </div>
   );
 }
